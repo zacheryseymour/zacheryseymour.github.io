@@ -4,6 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Zachery Seymour</title>
+<meta name="description" content="Zachery Seymour: internal controls, process improvement and automation. SOX controls certified on time, measured improvements, and tools an auditor can follow.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zacheryseymour.github.io/pro/">
+<meta property="og:title" content="Zachery Seymour">
+<meta property="og:description" content="Internal controls, process improvement and automation. I build processes that outlive the person running them.">
+<meta property="og:image" content="https://zacheryseymour.github.io/pro/og-pro.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="I build processes that outlive the person running them.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -130,25 +142,24 @@ section { padding: 56px 0 8px; }
 .off p { margin: 0 0 14px; }
 .gallery {
   display: grid; gap: 12px; margin-top: 22px;
-  grid-template-columns: 1fr 1.6fr; grid-template-areas: "kite kite" "heron fog" "heron fly";
+  grid-template-columns: 1fr 1.127fr; grid-template-areas: "kite kite" "heron fog" "heron fly"; align-items: start;
 }
 .gallery figure { margin: 0; position: relative; overflow: hidden; border-radius: 3px; background: var(--sheet); }
-.gallery img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.gallery img { display: block; width: 100%; height: auto; }
 .gallery figcaption {
   position: absolute; left: 10px; bottom: 10px; font-family: var(--mono); font-size: .7rem;
   letter-spacing: .04em; text-transform: uppercase; color: #fff; background: rgba(10,14,13,.6);
   padding: 4px 8px; border-radius: 2px;
 }
 .g-kite { grid-area: kite; aspect-ratio: 1800 / 563; }
-.g-kite img { object-position: left center; }
-.g-heron { grid-area: heron; }
-.g-fog { grid-area: fog; aspect-ratio: 16 / 9; }
-.g-fly { grid-area: fly; aspect-ratio: 16 / 9; }
+.g-heron { grid-area: heron; aspect-ratio: 1389 / 1800; }
+.g-fog { grid-area: fog; aspect-ratio: 1800 / 1013; }
+.g-fly { grid-area: fly; aspect-ratio: 1800 / 1013; }
 .photo-link { margin-top: 14px; }
 @media (max-width: 640px) {
   .gallery { grid-template-columns: 1fr; grid-template-areas: "kite" "heron" "fog" "fly"; }
   .g-kite { aspect-ratio: 1800 / 563; }
-  .g-heron { aspect-ratio: 4 / 5; }
+  .g-heron { aspect-ratio: 1389 / 1800; }
 }
 
 /* Contact */
