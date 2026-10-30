@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zachery Seymour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: an audit workpaper. Every claim carries a red-pencil tickmark, keyed to a legend, the way an auditor marks evidence. */
+:root {
+  --paper: #f2f5f4;
+  --sheet: #fbfcfc;
+  --ink: #15201d;
+  --muted: #56645f;
+  --rule: #cfd8d5;
+  --pencil: #b8322a;
+  --green: #2c6b4f;
+  --display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f1514; --sheet: #151d1b; --ink: #e4ebe8; --muted: #9aa9a3;
+    --rule: #2a3633; --pencil: #ec6a5f; --green: #6fbf98; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f1514; --sheet: #151d1b; --ink: #e4ebe8; --muted: #9aa9a3;
+  --rule: #2a3633; --pencil: #ec6a5f; --green: #6fbf98; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--body); font-size: 1.0625rem; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--ink); text-decoration-color: var(--pencil); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--pencil); outline-offset: 3px; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+.mono { font-family: var(--mono); font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.tick { font-family: var(--mono); color: var(--pencil); font-weight: 600; margin-right: .35em; }
+
+/* Header strip, like a workpaper heading */
+.wp-head { border-bottom: 1px solid var(--rule); background: var(--sheet); }
+.wp-head .wrap { display: flex; flex-wrap: wrap; gap: 8px 28px; padding-top: 12px; padding-bottom: 12px; justify-content: space-between; }
+.wp-head nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.wp-head nav a { font-family: var(--mono); font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; text-decoration: none; color: var(--muted); }
+.wp-head nav a:hover { color: var(--pencil); }
+
+/* Hero */
+.hero { padding: 64px 0 40px; }
+.hero h1 {
+  font-family: var(--display); font-weight: 800; font-size: clamp(2.6rem, 7vw, 4.75rem);
+  line-height: .98; letter-spacing: -.025em; margin: 14px 0 22px; text-wrap: balance;
+}
+.hero h1 .strike { position: relative; white-space: nowrap; }
+.hero h1 .strike::after {
+  content: ""; position: absolute; left: -2%; right: -2%; bottom: .08em; height: .12em;
+  background: var(--pencil); opacity: .85; transform: rotate(-1.2deg); border-radius: 2px;
+  transform-origin: left; animation: pencil .9s .3s ease-out both;
+}
+@keyframes pencil { from { transform: rotate(-1.2deg) scaleX(0); } to { transform: rotate(-1.2deg) scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .hero h1 .strike::after { animation: none; } }
+.hero .lede { max-width: 60ch; font-size: 1.2rem; color: var(--ink); margin: 0; }
+.hero .who { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 8px 22px; }
+
+/* Legend */
+.legend {
+  margin: 8px 0 0; padding: 14px 16px; border: 1px dashed var(--rule); border-radius: 4px;
+  display: flex; flex-wrap: wrap; gap: 6px 22px; background: var(--sheet);
+}
+.legend span { font-family: var(--mono); font-size: .75rem; color: var(--muted); }
+
+/* Figures */
+.figs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); margin: 44px 0 0; }
+.fig { padding: 18px 16px 20px 0; }
+.fig + .fig { padding-left: 16px; border-left: 1px solid var(--rule); }
+.fig b { display: block; font-family: var(--display); font-weight: 800; font-size: 2.6rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.fig b sup { font-family: var(--mono); font-size: .8rem; color: var(--pencil); vertical-align: top; margin-left: 3px; }
+.fig p { margin: 8px 0 0; font-size: .95rem; color: var(--muted); line-height: 1.4; }
+@media (max-width: 720px) {
+  .figs { grid-template-columns: 1fr 1fr; }
+  .fig:nth-child(3) { padding-left: 0; border-left: 0; }
+  .fig:nth-child(n+3) { border-top: 1px solid var(--rule); }
+}
+
+/* Sections */
+section { padding: 56px 0 8px; }
+.sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 22px; border-bottom: 1px solid var(--rule); padding-bottom: 10px; }
+.sec-head h2 { font-family: var(--display); font-weight: 700; font-size: 1.6rem; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+
+/* Case notes */
+.cases { display: grid; gap: 18px; }
+.case {
+  background: var(--sheet); border: 1px solid var(--rule); border-left: 3px solid var(--pencil);
+  border-radius: 4px; padding: 20px 22px;
+}
+.case h3 { font-family: var(--display); font-weight: 700; font-size: 1.2rem; margin: 6px 0 12px; text-wrap: balance; }
+.case dl { display: grid; grid-template-columns: 120px 1fr; gap: 8px 18px; margin: 0; }
+.case dt { font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding-top: .3em; }
+.case dd { margin: 0; }
+@media (max-width: 560px) { .case dl { grid-template-columns: 1fr; gap: 2px; } .case dd { margin-bottom: 10px; } }
+
+/* Principles */
+.rules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 36px; counter-reset: r; }
+.rules div { counter-increment: r; }
+.rules h3 { font-family: var(--display); font-size: 1.05rem; margin: 0 0 6px; }
+.rules h3::before { content: "R" counter(r) " "; font-family: var(--mono); color: var(--pencil); font-size: .8rem; }
+.rules p { margin: 0; color: var(--muted); }
+@media (max-width: 640px) { .rules { grid-template-columns: 1fr; } }
+
+/* Timeline */
+.path { list-style: none; margin: 0; padding: 0; }
+.path li { display: grid; grid-template-columns: 150px 1fr; gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.path .when { font-family: var(--mono); font-size: .8rem; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: .2em; }
+.path strong { font-family: var(--display); font-weight: 700; }
+.path p { margin: 4px 0 0; color: var(--muted); }
+@media (max-width: 560px) { .path li { grid-template-columns: 1fr; gap: 2px; } }
+
+.creds { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.creds span { font-family: var(--mono); font-size: .75rem; border: 1px solid var(--rule); border-radius: 999px; padding: 6px 12px; background: var(--sheet); }
+
+/* Off the clock */
+.off { max-width: 65ch; }
+.off p { margin: 0 0 14px; }
+.gallery {
+  display: grid; gap: 12px; margin-top: 22px;
+  grid-template-columns: 1fr 1.6fr; grid-template-areas: "kite kite" "heron fog" "heron fly";
+}
+.gallery figure { margin: 0; position: relative; overflow: hidden; border-radius: 3px; background: var(--sheet); }
+.gallery img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.gallery figcaption {
+  position: absolute; left: 10px; bottom: 10px; font-family: var(--mono); font-size: .7rem;
+  letter-spacing: .04em; text-transform: uppercase; color: #fff; background: rgba(10,14,13,.6);
+  padding: 4px 8px; border-radius: 2px;
+}
+.g-kite { grid-area: kite; aspect-ratio: 1800 / 563; }
+.g-kite img { object-position: left center; }
+.g-heron { grid-area: heron; }
+.g-fog { grid-area: fog; aspect-ratio: 16 / 9; }
+.g-fly { grid-area: fly; aspect-ratio: 16 / 9; }
+.photo-link { margin-top: 14px; }
+@media (max-width: 640px) {
+  .gallery { grid-template-columns: 1fr; grid-template-areas: "kite" "heron" "fog" "fly"; }
+  .g-kite { aspect-ratio: 1800 / 563; }
+  .g-heron { aspect-ratio: 4 / 5; }
+}
+
+/* Contact */
+.contact { padding: 56px 0 72px; }
+.contact .big { font-family: var(--display); font-weight: 800; font-size: clamp(1.6rem, 4.5vw, 2.4rem); line-height: 1.1; margin: 0 0 14px; text-wrap: balance; }
+.contact .addr { font-family: var(--mono); font-size: .95rem; }
+footer { border-top: 1px solid var(--rule); padding: 18px 0 28px; }
+</style>
+</head>
+<body>
+
+<header class="wp-head">
+  <div class="wrap">
+    <span class="mono">W/P ref: ZS.01 &nbsp;|&nbsp; Prepared by: Z. Seymour</span>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#method">Method</a>
+      <a href="#path">Path</a>
+      <a href="#off-the-clock">Off the clock</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="mono">Zachery Seymour &nbsp;·&nbsp; Internal controls, process improvement, automation</div>
+    <h1>I build processes that <span class="strike">outlive</span> the person running them.</h1>
+    <p class="lede">I certify SOX controls, measure the processes behind them, and then build the automation that makes them run on time, every time, in a way an auditor can follow. Seven years at Travelers, five running multi-site operations, four as an Air Force avionics technician.</p>
+    <div class="who">
+      <span class="mono">Senior Consultant, Business Enablement, Travelers</span>
+      <span class="mono">U.S. Air Force veteran</span>
+    </div>
+  </div>
+
+  <div class="legend" aria-label="Tickmark legend">
+    <span><span class="tick">✓</span>result measured before and after</span>
+    <span><span class="tick">Σ</span>count, footed</span>
+    <span><span class="tick">≈</span>rounded figure</span>
+    <span><span class="tick">A</span>reviewed with internal audit</span>
+  </div>
+
+  <div class="figs">
+    <div class="fig"><b>24<sup>Σ</sup></b><p>Key SOX controls certified, early or on the due date, every cycle</p></div>
+    <div class="fig"><b>80%<sup>≈</sup></b><p>handle time cut from a recurring monthly audit review</p></div>
+    <div class="fig"><b>71<sup>Σ</sup></b><p>recipients in an attestation workflow that produces its own evidence</p></div>
+    <div class="fig"><b>3<sup>✓</sup></b><p>Key controls retired after showing they tested the wrong risk</p></div>
+  </div>
+
+  <section id="work">
+    <div class="sec-head"><span class="mono">01</span><h2>Selected work</h2></div>
+    <div class="cases">
+
+      <article class="case">
+        <span class="mono"><span class="tick">✓</span><span class="tick">A</span>Weekly SOX reporting</span>
+        <h3>A weekly control report that runs end to end</h3>
+        <dl>
+          <dt>Problem</dt><dd>A report supporting 15 Key controls depended on manual filtering, pivot refreshes, and a hand-kept distribution list.</dd>
+          <dt>Built</dt><dd>A VBA module that applies the business rules, refreshes the certified pivots, builds recipients from current data, and stages the email for review.</dd>
+          <dt>Safeguard</dt><dd>Trend and dashboard views sit structurally apart from certified figures, so a derived number can never override a certified one.</dd>
+        </dl>
+      </article>
+
+      <article class="case">
+        <span class="mono"><span class="tick">Σ</span>Quarterly attestation</span>
+        <h3>An attestation that collects its own audit evidence</h3>
+        <dl>
+          <dt>Problem</dt><dd>A quarterly attestation behind 13 monitoring controls was a chase, and the evidence was rebuilt after the fact.</dd>
+          <dt>Built</dt><dd>A builder workbook and two VBA modules that generate the survey pack and send response files to 71 recipients across 3 business areas.</dd>
+          <dt>Result</dt><dd>The evidence is a byproduct of the workflow instead of a separate cleanup step.</dd>
+        </dl>
+      </article>
+
+      <article class="case">
+        <span class="mono"><span class="tick">✓</span><span class="tick">≈</span>Process improvement</span>
+        <h3>Roughly 80% off a monthly audit review</h3>
+        <dl>
+          <dt>Problem</dt><dd>A recurring audit response and timeliness review ate most of a day, and a broken macro forced workarounds.</dd>
+          <dt>Built</dt><dd>Redesigned the template, automated the build and formatting steps, and restored the macro.</dd>
+          <dt>Result</dt><dd>About 80% less handle time, measured before and after.</dd>
+        </dl>
+      </article>
+
+      <article class="case">
+        <span class="mono"><span class="tick">✓</span>Control design</span>
+        <h3>Retiring controls is part of the job too</h3>
+        <dl>
+          <dt>Finding</dt><dd>Three Key controls were testing activity outside the risk they were meant to cover.</dd>
+          <dt>Action</dt><dd>Documented the design gap and worked it through to retirement.</dd>
+          <dt>Result</dt><dd>Removed from the annual certification cycle, so effort goes where the risk is.</dd>
+        </dl>
+      </article>
+
+      <article class="case">
+        <span class="mono"><span class="tick">Σ</span>Rules-gated tooling</span>
+        <h3>A template builder that will not release incomplete work</h3>
+        <dl>
+          <dt>Problem</dt><dd>A manual template process where errors carried real client and legal exposure.</dd>
+          <dt>Built</dt><dd>With the business: a 10-sheet workbook and VBA module with 22 rules traced to governing documents and 16 defects logged with root cause.</dd>
+          <dt>Result</dt><dd>A colleague now owns a follow-on build on the same pattern.</dd>
+        </dl>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="method">
+    <div class="sec-head"><span class="mono">02</span><h2>How I work</h2></div>
+    <div class="rules">
+      <div><h3>Fix the class of error</h3><p>When a report went out with stale recipients, I rebuilt the list from live data and added a check before send, instead of just correcting the list.</p></div>
+      <div><h3>Report the real number</h3><p>On a Lean Six Sigma pilot, I retired a favorable figure of my own because it mixed comparison bases. The corrected number was less flattering and far more defensible.</p></div>
+      <div><h3>Documentation ships with the tool</h3><p>Every build comes with a maintainer guide and a plain-language walkthrough, so someone who was not in the room can run it and audit it.</p></div>
+      <div><h3>Maintainable beats clever</h3><p>I built a reporting app in React, then rebuilt it in VBA on purpose, because that is what the team can keep running.</p></div>
+    </div>
+  </section>
+
+  <section id="path">
+    <div class="sec-head"><span class="mono">03</span><h2>Path</h2></div>
+    <ol class="path">
+      <li><span class="when">2023 to now</span><div><strong>Senior Consultant, Travelers</strong><p>Compliance and control reporting lead for a business critical unit: SOX certification, control monitoring, process improvement, automation.</p></div></li>
+      <li><span class="when">2022 to 2023</span><div><strong>Operations Analyst, Travelers</strong><p>Financial self-assessment validations for a major claim center; administrator for the legal billing platforms.</p></div></li>
+      <li><span class="when">2019 to 2022</span><div><strong>Claim Professional, Travelers</strong><p>Perfect file review scores for all of 2021; adjunct trainer for two new-hire classes.</p></div></li>
+      <li><span class="when">2014 to 2019</span><div><strong>Operations Manager, ESO LLC</strong><p>Five locations, 10 to 15 people. Rebuilt inventory and loyalty programs during 40% year-over-year growth.</p></div></li>
+      <li><span class="when">2008 to 2012</span><div><strong>Avionics Technician, U.S. Air Force</strong><p>Electronic warfare systems. Unit Advisory Council president while deployed, serving 400+ airmen.</p></div></li>
+    </ol>
+    <div class="creds" aria-label="Education and credentials">
+      <span>B.A. Human Communication, UCF</span>
+      <span>Lean Six Sigma Yellow Belt</span>
+      <span>Green Belt trained, certification in progress</span>
+      <span>GenAI Certified Professional</span>
+      <span>Excel VBA · SQL · Power Query · Power Automate · React</span>
+    </div>
+  </section>
+
+  <section id="off-the-clock">
+    <div class="sec-head"><span class="mono">04</span><h2>Off the clock</h2></div>
+    <div class="off">
+      <p>I'm a photographer, mostly wildlife and early-light landscapes. My current long-term project is <em>Wild Pockets</em>, a year-long wildlife series. The habits carry over from the day job: isolate the variable, test, adjust, document what worked. Same method on a jet, a macro, or a heron that will not hold still.</p>
+      <p>When the camera is down, I'm baking, working in the garden, volunteering with Habitat for Humanity and a neighborhood food distribution, or with my wife and kids.</p>
+    </div>
+    <div class="gallery">
+      <figure class="g-kite"><img src="img/kite.jpg" alt="Kiteboarder carving across choppy blue water under an orange kite, with a tree-lined shore behind" loading="lazy"><figcaption>Kiteboarder</figcaption></figure>
+      <figure class="g-heron"><img src="img/heron.jpg" alt="Great blue heron at the water's edge holding a sunfish in its bill" loading="lazy"><figcaption>Great blue heron</figcaption></figure>
+      <figure class="g-fog"><img src="img/fog.jpg" alt="Sunrise through fog and young pines, framed by an oak branch" loading="lazy"><figcaption>Morning fog</figcaption></figure>
+      <figure class="g-fly"><img src="img/butterfly.jpg" alt="Gulf fritillary butterfly with open wings on a white wildflower" loading="lazy"><figcaption>Gulf fritillary</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="sec-head"><span class="mono">05</span><h2>Contact</h2></div>
+    <p class="big">Working on controls, automation, or a process that only one person knows how to run? I'd like to hear about it.</p>
+    <p class="addr"><a href="mailto:zachery.seymour@gmail.com">zachery.seymour@gmail.com</a></p>
+    <p class="addr"><a href="https://www.linkedin.com/in/zacheryseymour">linkedin.com/in/zacheryseymour</a></p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap mono">Prepared by Z. Seymour &nbsp;·&nbsp; Reviewed: Oct 2026 &nbsp;·&nbsp; No client or employer data included</div>
+</footer>
+
+</body>
+</html>
