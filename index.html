@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zachery Seymour Photography</title>
+<meta name="description" content="Wildlife and early-light photography, made in micro pockets of time. Home of the Wild Pockets series and the Zachery Seymour YouTube channel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400&family=Kaushan+Script&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#E5484D;
+  --bg:#0E1113; --fg:#ECEEEA; --muted:#8D9695; --faint:#5E6766; --line:#22292B;
+  --logo-ink:none; --logo-light:block;
+  --serif:"Cormorant Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --sans:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --script:"Kaushan Script",cursive;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){--bg:#F3F3EE;--fg:#15191A;--muted:#5D6563;--faint:#8E9592;--line:#D9DAD3;--logo-ink:block;--logo-light:none;color-scheme:light}
+}
+:root[data-theme="light"]{--bg:#F3F3EE;--fg:#15191A;--muted:#5D6563;--faint:#8E9592;--line:#D9DAD3;--logo-ink:block;--logo-light:none;color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.7 var(--sans);transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.wrap{width:min(1200px,100% - 48px);margin-inline:auto}
+@media (max-width:560px){.wrap{width:calc(100% - 36px)}}
+
+/* Type */
+.label{font:500 11px/1.4 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:0 0 22px;display:flex;align-items:center;gap:12px}
+.label::before{content:"";width:24px;height:1px;background:currentColor;opacity:.6}
+.display{font:400 clamp(40px,5.6vw,76px)/1.04 var(--serif);letter-spacing:-.01em;margin:0}
+.display em{font-style:italic;font-weight:400}
+h2{font:400 clamp(34px,4.2vw,56px)/1.08 var(--serif);letter-spacing:-.005em;margin:0}
+h2 em{font-style:italic}
+h3{font:500 26px/1.15 var(--serif);margin:0}
+p{margin:0 0 1.1em}
+.body{color:var(--muted);max-width:58ch}
+.body strong{color:var(--fg);font-weight:500}
+.lede{font:400 clamp(20px,1.7vw,23px)/1.55 var(--serif);color:var(--fg);max-width:44ch}
+
+/* Header */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand .logo{width:30px;height:auto}
+.logo.ink{display:var(--logo-ink)} .logo.light{display:var(--logo-light)}
+.wm{display:flex;flex-direction:column;line-height:1}
+.wm .z{font:400 20px/.9 var(--script)}
+.wm .s{font:800 9px/1 var(--sans);letter-spacing:.32em;margin-top:4px}
+.nav{display:flex;align-items:center;gap:30px}
+.nav a{font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:var(--muted);transition:color .2s}
+.nav a:hover{color:var(--fg)}
+.nav a.sub{color:var(--fg);display:inline-flex;align-items:center;gap:9px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block;flex:none}
+.theme{background:none;border:0;color:var(--muted);width:30px;height:30px;cursor:pointer;display:grid;place-items:center;padding:0}
+.theme:hover{color:var(--fg)}
+.theme svg{width:15px;height:15px}
+@media (max-width:860px){.nav a.l{display:none}.nav{gap:18px}}
+
+/* Buttons: quiet, rectangular */
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:12px;font:500 11.5px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;text-decoration:none;padding:17px 24px;border:1px solid var(--fg);transition:background .2s,color .2s}
+.btn.solid{background:var(--fg);color:var(--bg)}
+.btn.solid:hover{background:transparent;color:var(--fg)}
+.btn.line{color:var(--fg)}
+.btn.line:hover{background:var(--fg);color:var(--bg)}
+.handle{font:400 12px/1.5 var(--mono);color:var(--faint);margin-top:18px}
+
+/* Hero */
+.hero{padding:clamp(48px,8vw,120px) 0 clamp(64px,9vw,130px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,6vw,96px);align-items:center}
+.hero .text .lede{margin-top:30px}
+.hero figure{margin:0;justify-self:end;width:100%;max-width:500px}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero figure{justify-self:start}}
+
+/* Photo + caption (captions sit on the page, like a plate in a book) */
+.frame{margin:0;min-width:0;display:flex;flex-direction:column}
+.frame-open{all:unset;cursor:zoom-in;display:block}
+.frame-open:focus-visible{outline:2px solid var(--fg);outline-offset:4px}
+.frame img{width:100%;height:auto;aspect-ratio:var(--ar);transition:opacity .3s}
+.frame-open:hover img{opacity:.92}
+.frame figcaption{padding:12px 0 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
+.frame .ttl{font:italic 400 18px/1.3 var(--serif);color:var(--fg)}
+.frame .ro{font:400 11px/1.5 var(--mono);color:var(--faint);letter-spacing:.02em}
+.frame .lens{flex-basis:100%;margin-top:-2px}
+
+/* Sections */
+section.block{padding:clamp(72px,10vw,140px) 0;border-top:1px solid var(--line)}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+
+/* Channel list */
+.list{list-style:none;padding:0;margin:clamp(40px,5vw,64px) 0 0;display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(32px,5vw,72px);counter-reset:n}
+.list li{border-top:1px solid var(--line);padding:26px 0 30px;display:grid;grid-template-columns:44px 1fr;gap:0 10px;counter-increment:n}
+.list li::before{content:counter(n,upper-roman);font:italic 400 20px/1.2 var(--serif);color:var(--faint)}
+.list h3{font-size:24px;margin-bottom:8px}
+.list p{color:var(--muted);margin:0;font-size:15.5px}
+@media (max-width:700px){.list{grid-template-columns:1fr}}
+.quote{margin:clamp(48px,6vw,80px) 0 0;padding:0;font:italic 400 clamp(24px,2.6vw,34px)/1.35 var(--serif);max-width:30ch}
+.quote cite{display:block;font:500 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-style:normal;margin-top:20px}
+
+/* Wild Pockets */
+.series-title{font:italic 400 clamp(56px,8vw,112px)/.95 var(--serif);margin:0;letter-spacing:-.01em}
+.series-sub{font:500 11px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:18px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 0;margin:30px 0 0;padding:0;list-style:none;font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.facts li:not(:last-child)::after{content:"/";margin:0 14px;color:var(--faint)}
+
+/* Rows: widths follow aspect ratio, so heights match and nothing is cropped */
+.rows{display:flex;flex-direction:column;gap:clamp(36px,4vw,56px);margin-top:clamp(48px,6vw,88px)}
+.row{display:flex;gap:clamp(18px,2vw,28px);align-items:flex-start}
+.row .frame{flex:var(--ar) 1 0}
+@media (max-width:640px){.row{flex-direction:column;gap:clamp(36px,4vw,56px)}.row .frame{flex:none;width:100%}}
+
+/* About */
+.gear{margin:34px 0 0;padding:0;list-style:none;font:400 13px/1.4 var(--mono);max-width:520px}
+.gear li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--line)}
+.gear li:last-child{border-bottom:1px solid var(--line)}
+.gear span:last-child{color:var(--faint);text-align:right}
+.mark{width:72px;margin-top:40px;opacity:.9}
+
+/* Closing */
+.closing{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px)}
+.closing h3{font-size:clamp(28px,3vw,38px);margin:0 0 16px}
+.closing p{color:var(--muted);max-width:44ch}
+.closing .btn{margin-top:14px}
+@media (max-width:760px){.closing{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--line);padding:40px 0 48px}
+footer .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+footer .wm .z{font-size:26px} footer .wm .s{font-size:10px}
+footer small{font:400 11px/1.6 var(--mono);color:var(--faint)}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:#000;display:none;flex-direction:column}
+.lb.open{display:flex}
+.lb .stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:20px}
+.lb .stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.lb .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px calc(14px + env(safe-area-inset-bottom));color:#9AA3A1;font:400 11.5px/1.5 var(--mono);border-top:1px solid #1b2022}
+.lb .bar .t{color:#F1F2EE;font:italic 400 20px/1.3 var(--serif)}
+.lb .ctrl{display:flex;gap:6px;flex:none}
+.lb button{background:none;border:1px solid #30383a;color:#F1F2EE;width:42px;height:42px;cursor:pointer;font:400 20px/1 var(--serif)}
+.lb button:hover{border-color:#F1F2EE}
+.lb .x{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.5);font:400 14px/1 var(--sans)}
+</style>
+<script>
+try{var t=localStorage.getItem("zs-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Zachery Seymour Photography, home">
+      <img class="logo ink" src="logo-ink.png" width="249" height="256" alt="">
+      <img class="logo light" src="logo-light.png" width="249" height="256" alt="">
+      <span class="wm"><span class="z">Zachery</span><span class="s">SEYMOUR</span></span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a class="l" href="#channel">Channel</a>
+      <a class="l" href="#wild-pockets">Wild Pockets</a>
+      <a class="l" href="#gallery">Gallery</a>
+      <a class="l" href="#about">About</a>
+      <button class="theme" type="button" id="themeBtn" aria-label="Switch light or dark mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg>
+      </button>
+      <a class="sub" href="https://www.youtube.com/@zacheryseymour?sub_confirmation=1" rel="noopener"><span class="dot" aria-hidden="true"></span>Subscribe</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="text">
+      <p class="label">Zachery Seymour Photography</p>
+      <h1 class="display">Wildlife and early light, found in the <em>gaps of an ordinary week.</em></h1>
+      <p class="lede">A photography channel made in micro pockets of time: lunch breaks, first light, and the thirty minutes a full life actually gives you.</p>
+      <div class="cta">
+        <a class="btn solid" href="https://www.youtube.com/@zacheryseymour?sub_confirmation=1" rel="noopener"><span class="dot" aria-hidden="true"></span>Subscribe on YouTube</a>
+        <a class="btn line" href="https://www.youtube.com/@zacheryseymour" rel="noopener">Watch the channel</a>
+      </div>
+      <p class="handle">youtube.com/@zacheryseymour &nbsp;·&nbsp; first episodes in production</p>
+    </div>
+    <figure class="frame" style="--ar:calc(1390/1800)" data-info='{"t":"Heron and Bluegill","s":"1/250 · f/6.7 · ISO 100 · 300mm","l":"Tamron 70-300mm"}'>
+      <button class="frame-open" type="button" aria-label="View Heron and Bluegill larger">
+        <img src="heron-bluegill.jpg" width="1390" height="1800" alt="A great blue heron standing in grass at the water's edge with a bluegill in its bill" fetchpriority="high">
+      </button>
+      <figcaption><span class="ttl">Heron and Bluegill</span><span class="ro">1/250 · f/6.7 · ISO 100 · 300mm · Tamron 70-300mm</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block" id="channel">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="label">The channel</p>
+        <h2>A full-time job, a full house, and a camera <em>on the lunch break.</em></h2>
+      </div>
+      <div>
+        <p class="lede">I'm learning photography in public. Real shoots, honest assessments of my own work, and the misses shown alongside the keepers.</p>
+        <p class="body">If good photographs can come out of the margins of a normal week, they can come out of yours too. That's the whole idea, and the channel is the evidence, one episode at a time.</p>
+      </div>
+    </div>
+    <ol class="list">
+      <li><div><h3>Wild Pockets</h3><p>Thirty-minute lunch sessions in a single park, three times a week, across a full year.</p></div></li>
+      <li><div><h3>Monthly report cards</h3><p>My work graded against a professional standard, with Claude as my coach: what fell short, and how I fixed it in the edit.</p></div></li>
+      <li><div><h3>Every setting shown</h3><p>Shutter, aperture, ISO and lens on every photograph, with the reasoning behind each choice. Disagree? Tell me.</p></div></li>
+      <li><div><h3>Short form</h3><p>Small subjects, early light and Florida skies, made in the pockets between everything else.</p></div></li>
+    </ol>
+    <blockquote class="quote">For anyone who wants better photographs but doesn't have whole weekends to chase them.<cite>Who it's for</cite></blockquote>
+  </div>
+</section>
+
+<section class="block" id="wild-pockets">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="label">Flagship series</p>
+        <h2 class="series-title">Wild Pockets</h2>
+        <p class="series-sub">One park &nbsp;·&nbsp; A year of lunches</p>
+      </div>
+      <div>
+        <p class="lede">For two years I walked the same stretch of sidewalk every day and fell for the small changes. Wild Pockets brings that habit back with a camera.</p>
+        <p class="body">One park, wild pockets surrounded by mankind: herons working the water's edge, a squirrel with somebody's bread, a stranger on a dock, a man who hauled a keyboard out under an oak. Each season, taken for what it is. The series is becoming a book.</p>
+        <ul class="facts"><li>Three lunches a week</li><li>Thirty minutes each</li><li>One year</li></ul>
+      </div>
+    </div>
+    <div class="rows">
+<div class="row"><figure class="frame " style="--ar:1.3333" data-info="{&quot;t&quot;: &quot;The Piano Chap&quot;, &quot;s&quot;: &quot;1/250 \u00b7 f/9.5 \u00b7 ISO 250 \u00b7 102mm&quot;, &quot;l&quot;: &quot;Tamron 70-300mm&quot;}">
+  <button class="frame-open" type="button" aria-label="View The Piano Chap larger">
+    <img src="piano-chap.jpg" width="1800" height="1350" alt="The Piano Chap" loading="lazy" decoding="async">
+  </button>
+  <figcaption><span class="ttl">The Piano Chap</span><span class="ro">1/250 · f/9.5 · ISO 250 · 102mm</span><span class="ro lens">Tamron 70-300mm</span></figcaption>
+</figure>
+<figure class="frame " style="--ar:1.2552" data-info="{&quot;t&quot;: &quot;Squirrel Throne&quot;, &quot;s&quot;: &quot;1/1500 \u00b7 f/6.3 \u00b7 ISO 3200 \u00b7 300mm&quot;, &quot;l&quot;: &quot;Tamron 70-300mm&quot;}">
+  <button class="frame-open" type="button" aria-label="View Squirrel Throne larger">
+    <img src="squirrel-throne.jpg" width="1800" height="1434" alt="Squirrel Throne" loading="lazy" decoding="async">
+  </button>
+  <figcaption><span class="ttl">Squirrel Throne</span><span class="ro">1/1500 · f/6.3 · ISO 3200 · 300mm</span><span class="ro lens">Tamron 70-300mm</span></figcaption>
+</figure></div>
+<div class="row"><figure class="frame " style="--ar:1.5748" data-info="{&quot;t&quot;: &quot;Runner&quot;, &quot;s&quot;: &quot;1/1500 \u00b7 f/6.3 \u00b7 ISO 250 \u00b7 300mm&quot;, &quot;l&quot;: &quot;Tamron 70-300mm&quot;}">
+  <button class="frame-open" type="button" aria-label="View Runner larger">
+    <img src="runner.jpg" width="1800" height="1143" alt="Runner" loading="lazy" decoding="async">
+  </button>
+  <figcaption><span class="ttl">Runner</span><span class="ro">1/1500 · f/6.3 · ISO 250 · 300mm</span><span class="ro lens">Tamron 70-300mm</span></figcaption>
+</figure>
+<figure class="frame " style="--ar:1.7787" data-info="{&quot;t&quot;: &quot;Water Bench&quot;, &quot;s&quot;: &quot;1/250 \u00b7 f/6.7 \u00b7 ISO 320 \u00b7 265mm&quot;, &quot;l&quot;: &quot;Tamron 70-300mm&quot;}">
+  <button class="frame-open" type="button" aria-label="View Water Bench larger">
+    <img src="water-bench.jpg" width="1800" height="1012" alt="Water Bench" loading="lazy" decoding="async">
+  </button>
+  <figcaption><span class="ttl">Water Bench</span><span class="ro">1/250 · f/6.7 · ISO 320 · 265mm</span><span class="ro lens">Tamron 70-300mm</span></figcaption>
+</figure></div>
+<div class="row"><figure class="frame " style="--ar:2.0045" data-info="{&quot;t&quot;: &quot;Nature&#x27;s Humanity&quot;, &quot;s&quot;: &quot;1/90 \u00b7 f/22 \u00b7 ISO 100 \u00b7 16mm&quot;, &quot;l&quot;: &quot;Sony 16-50mm&quot;}">
+  <button class="frame-open" type="button" aria-label="View Nature&#x27;s Humanity larger">
+    <img src="natures-humanity.jpg" width="1800" height="898" alt="Nature&#x27;s Humanity" loading="lazy" decoding="async">
+  </button>
+  <figcaption><span class="ttl">Nature&#x27;s Humanity</span><span class="ro">1/90 · f/22 · ISO 100 · 16mm</span><span class="ro lens">Sony 16-50mm</span></figcaption>
+</figure>
+<figure class="frame " style="--ar:1.6514" data-info="{&quot;t&quot;: &quot;Preening&quot;, &quot;s&quot;: &quot;1/250 \u00b7 f/6.3 \u00b7 ISO 125 \u00b7 300mm&quot;, &quot;l&quot;: &quot;Tamron 70-300mm&quot;}">
+  <button class="frame-open" type="button" aria-label="View Preening larger">
+    <img src="bw-duck.jpg" width="1800" height="1090" alt="Preening" loading="lazy" decoding="async">
+  </button>
+  <figcaption><span class="ttl">Preening</span><span class="ro">1/250 · f/6.3 · ISO 125 · 300mm</span><span class="ro lens">Tamron 70-300mm</span></figcaption>
+</figure></div>
+<div class="row"><figure class="frame " style="--ar:1.2632" data-info="{&quot;t&quot;: &quot;Cloud Frame&quot;, &quot;s&quot;: &quot;1/250 \u00b7 f/22 \u00b7 ISO 100 \u00b7 30mm&quot;, &quot;l&quot;: &quot;Sony 16-50mm&quot;}">
+  <button class="frame-open" type="button" aria-label="View Cloud Frame larger">
+    <img src="cloud-frame.jpg" width="1800" height="1425" alt="Cloud Frame" loading="lazy" decoding="async">
+  </button>
+  <figcaption><span class="ttl">Cloud Frame</span><span class="ro">1/250 · f/22 · ISO 100 · 30mm</span><span class="ro lens">Sony 16-50mm</span></figcaption>
+</figure>
+<figure class="frame " style="--ar:2.0548" data-info="{&quot;t&quot;: &quot;Hunting Heron&quot;, &quot;s&quot;: &quot;1/250 \u00b7 f/6.7 \u00b7 ISO 100 \u00b7 179mm&quot;, &quot;l&quot;: &quot;Tamron 70-300mm&quot;}">
+  <button class="frame-open" type="button" aria-label="View Hunting Heron larger">
+    <img src="hunting-heron.jpg" width="1800" height="876" alt="Hunting Heron" loading="lazy" decoding="async">
+  </button>
+  <figcaption><span class="ttl">Hunting Heron</span><span class="ro">1/250 · f/6.7 · ISO 100 · 179mm</span><span class="ro lens">Tamron 70-300mm</span></figcaption>
+</figure></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="gallery">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="label">Gallery</p>
+        <h2>Frames from <em>the field.</em></h2>
+      </div>
+      <div>
+        <p class="body" style="margin-top:8px">Finished work from outside the series. Select any photograph to view it full size, with the settings it was made at.</p>
+      </div>
+    </div>
+    <div class="rows">
+<div class="row"><figure class="frame " style="--ar:0.7500" data-info="{&quot;t&quot;: &quot;Pileated Woodpecker&quot;, &quot;s&quot;: &quot;1/200 \u00b7 f/4 \u00b7 ISO 500 \u00b7 105mm&quot;, &quot;l&quot;: &quot;Sony 18-105mm f/4 G&quot;}">
+  <button class="frame-open" type="button" aria-label="View Pileated Woodpecker larger">
+    <img src="woodpecker.jpg" width="1350" height="1800" alt="Pileated Woodpecker" loading="lazy" decoding="async">
+  </button>
+  <figcaption><span class="ttl">Pileated Woodpecker</span><span class="ro">1/200 · f/4 · ISO 500 · 105mm</span><span class="ro lens">Sony 18-105mm f/4 G</span></figcaption>
+</figure>
+<figure class="frame " style="--ar:0.6678" data-info="{&quot;t&quot;: &quot;Great Egret&quot;, &quot;s&quot;: &quot;1/1000 \u00b7 f/6.7 \u00b7 ISO 400 \u00b7 273mm&quot;, &quot;l&quot;: &quot;Tamron 70-300mm&quot;}">
+  <button class="frame-open" type="button" aria-label="View Great Egret larger">
+    <img src="egret.jpg" width="1202" height="1800" alt="Great Egret" loading="lazy" decoding="async">
+  </button>
+  <figcaption><span class="ttl">Great Egret</span><span class="ro">1/1000 · f/6.7 · ISO 400 · 273mm</span><span class="ro lens">Tamron 70-300mm</span></figcaption>
+</figure>
+<figure class="frame " style="--ar:1.4975" data-info="{&quot;t&quot;: &quot;Water Lily&quot;, &quot;s&quot;: &quot;1/1500 \u00b7 f/4.5 \u00b7 ISO 100 \u00b7 145mm&quot;, &quot;l&quot;: &quot;Tamron 70-300mm&quot;}">
+  <button class="frame-open" type="button" aria-label="View Water Lily larger">
+    <img src="water-lily.jpg" width="1800" height="1202" alt="Water Lily" loading="lazy" decoding="async">
+  </button>
+  <figcaption><span class="ttl">Water Lily</span><span class="ro">1/1500 · f/4.5 · ISO 100 · 145mm</span><span class="ro lens">Tamron 70-300mm</span></figcaption>
+</figure>
+<figure class="frame " style="--ar:0.9994" data-info="{&quot;t&quot;: &quot;Bloom&quot;, &quot;s&quot;: &quot;1/4000 \u00b7 f/1.8 \u00b7 ISO 100 \u00b7 35mm&quot;, &quot;l&quot;: &quot;Sony 35mm f/1.8&quot;}">
+  <button class="frame-open" type="button" aria-label="View Bloom larger">
+    <img src="bloom.jpg" width="1799" height="1800" alt="Bloom" loading="lazy" decoding="async">
+  </button>
+  <figcaption><span class="ttl">Bloom</span><span class="ro">1/4000 · f/1.8 · ISO 100 · 35mm</span><span class="ro lens">Sony 35mm f/1.8</span></figcaption>
+</figure></div>
+<div class="row"><figure class="frame " style="--ar:3.1972" data-info="{&quot;t&quot;: &quot;Kite Day&quot;, &quot;s&quot;: &quot;Sony ZV-E10&quot;, &quot;l&quot;: &quot;&quot;}">
+  <button class="frame-open" type="button" aria-label="View Kite Day larger">
+    <img src="kite.jpg" width="1800" height="563" alt="Kite Day" loading="lazy" decoding="async">
+  </button>
+  <figcaption><span class="ttl">Kite Day</span><span class="ro">Sony ZV-E10</span></figcaption>
+</figure>
+<figure class="frame " style="--ar:0.7550" data-info="{&quot;t&quot;: &quot;Osprey&quot;, &quot;s&quot;: &quot;1/400 \u00b7 f/9 \u00b7 ISO 100 \u00b7 105mm&quot;, &quot;l&quot;: &quot;Sony 18-105mm f/4 G&quot;}">
+  <button class="frame-open" type="button" aria-label="View Osprey larger">
+    <img src="osprey.jpg" width="1359" height="1800" alt="Osprey" loading="lazy" decoding="async">
+  </button>
+  <figcaption><span class="ttl">Osprey</span><span class="ro">1/400 · f/9 · ISO 100 · 105mm</span><span class="ro lens">Sony 18-105mm f/4 G</span></figcaption>
+</figure>
+<figure class="frame " style="--ar:0.8000" data-info="{&quot;t&quot;: &quot;Water Hyacinth&quot;, &quot;s&quot;: &quot;1/500 \u00b7 f/6.3 \u00b7 ISO 100 \u00b7 300mm&quot;, &quot;l&quot;: &quot;Tamron 70-300mm&quot;}">
+  <button class="frame-open" type="button" aria-label="View Water Hyacinth larger">
+    <img src="hyacinth.jpg" width="1440" height="1800" alt="Water Hyacinth" loading="lazy" decoding="async">
+  </button>
+  <figcaption><span class="ttl">Water Hyacinth</span><span class="ro">1/500 · f/6.3 · ISO 100 · 300mm</span><span class="ro lens">Tamron 70-300mm</span></figcaption>
+</figure></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="about">
+  <div class="wrap split">
+    <div>
+      <p class="label">About</p>
+      <h2>Zachery <em>Seymour</em></h2>
+      <img class="mark logo ink" src="logo-ink.png" width="249" height="256" alt="">
+      <img class="mark logo light" src="logo-light.png" width="249" height="256" alt="">
+    </div>
+    <div>
+      <p class="lede">I photograph wildlife and early light: herons at the water's edge, the first hour of sun, the small things most people walk past. I keep the surroundings in the frame, because the place is half the story.</p>
+      <p class="body">I'm a Florida native, not a professional yet, and I'm learning in public: grading my own work honestly and showing the misses next to the keepers. Everything here was made with gear I already own and edited in Affinity and the free version of DaVinci Resolve.</p>
+      <ul class="gear" aria-label="Gear I own">
+        <li><span>Sony ZV-E10</span><span>Body</span></li>
+        <li><span>Tamron 70-300mm</span><span>Wildlife</span></li>
+        <li><span>Sony 18-105mm f/4 G</span><span>Walkaround</span></li>
+        <li><span>Sony 35mm f/1.8</span><span>Low light</span></li>
+        <li><span>Sony 16-50mm</span><span>Wide</span></li>
+        <li><span>iPhone 16 Pro Max</span><span>ProRAW skies</span></li>
+        <li><span>Insta360 Luna Ultra</span><span>Filming</span></li>
+        <li><span>GoPro HERO7 Black</span><span>Point of view</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contact">
+  <div class="wrap closing">
+    <div>
+      <p class="label">Coming soon</p>
+      <h3>Prints <em style="font-style:italic">and</em> events</h3>
+      <p>Wild Pockets is headed for a book, and prints of the strongest frames will follow. Event photography is planned as well. Nothing is available to order yet; subscribing is the best way to hear first.</p>
+    </div>
+    <div>
+      <p class="label">Contact</p>
+      <h3>Find me on YouTube</h3>
+      <p>The best way to reach me for now is through the channel. Questions and honest critique are always welcome.</p>
+      <a class="btn line" href="https://www.youtube.com/@zacheryseymour" rel="noopener">youtube.com/@zacheryseymour</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="wm"><span class="z">Zachery</span><span class="s">SEYMOUR</span></span>
+    <small>© 2026 Zachery Seymour Photography. All photographs by Zachery Seymour.<br>Made in micro pockets of time.</small>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="x" type="button" id="lbClose" aria-label="Close">✕</button>
+  <div class="stage"><img id="lbImg" alt=""></div>
+  <div class="bar">
+    <div><div class="t" id="lbT"></div><div id="lbS"></div></div>
+    <div class="ctrl"><button type="button" id="lbPrev" aria-label="Previous photo">‹</button><button type="button" id="lbNext" aria-label="Next photo">›</button></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById("themeBtn");
+  btn.addEventListener("click",function(){
+    var cur=root.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");
+    var next=cur==="light"?"dark":"light"; root.setAttribute("data-theme",next);
+    try{localStorage.setItem("zs-theme",next)}catch(e){}
+  });
+  var frames=[].slice.call(document.querySelectorAll(".frame[data-info]"));
+  var lb=document.getElementById("lb"),img=document.getElementById("lbImg"),T=document.getElementById("lbT"),S=document.getElementById("lbS"),i=0,last=null;
+  function show(n){i=(n+frames.length)%frames.length;var f=frames[i],d=JSON.parse(f.getAttribute("data-info")),src=f.querySelector("img");
+    img.src=src.getAttribute("src");img.alt=src.alt;T.textContent=d.t;S.textContent=[d.s,d.l].filter(Boolean).join(" · ");}
+  function open(n){last=document.activeElement;show(n);lb.classList.add("open");document.body.style.overflow="hidden";document.getElementById("lbClose").focus();}
+  function close(){lb.classList.remove("open");document.body.style.overflow="";if(last)last.focus();}
+  frames.forEach(function(f,n){f.querySelector(".frame-open").addEventListener("click",function(){open(n)})});
+  document.getElementById("lbClose").onclick=close;
+  document.getElementById("lbPrev").onclick=function(){show(i-1)};
+  document.getElementById("lbNext").onclick=function(){show(i+1)};
+  lb.addEventListener("click",function(e){if(e.target===lb||e.target.classList.contains("stage"))close()});
+  document.addEventListener("keydown",function(e){if(!lb.classList.contains("open"))return;
+    if(e.key==="Escape")close();else if(e.key==="ArrowRight")show(i+1);else if(e.key==="ArrowLeft")show(i-1);});
+  var x0=null;lb.addEventListener("touchstart",function(e){x0=e.touches[0].clientX},{passive:true});
+  lb.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)show(i+(dx<0?1:-1));x0=null},{passive:true});
+})();
+</script>
+</body>
+</html>
